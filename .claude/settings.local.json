@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__list_console_messages",
+      "WebSearch",
+      "WebFetch(domain:data-star.dev)",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__list_network_requests",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__click",
+      "WebFetch(domain:github.com)",
+      "mcp__chrome-devtools__select_page",
+      "mcp__chrome-devtools__get_network_request",
+      "Bash(gh issue create:*)",
+      "Bash(claude mcp add:*)",
+      "mcp__context7__resolve-library-id",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nUpdate to Datastar v1.0.0-RC.7 with correct attribute syntax\n\n- Switch to official Datastar CDN from starfederation\n- Fix data-bind:class to data-class:* for conditional classes\n- Fix data-bind:src to data-attr:src for dynamic attributes\n- Use object literal syntax for data-signals instead of JSON strings\n- Add missing parentheses in gallery navigation expressions\n- Reduce hero section padding for better layout\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}

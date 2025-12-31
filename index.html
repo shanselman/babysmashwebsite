@@ -6,24 +6,24 @@
     <title>BabySmash! - Fun and Safe Computer Play for Babies & Toddlers</title>
     <meta name="description" content="BabySmash! lets babies and toddlers safely play with your keyboard. Colorful shapes, letters, and numbers appear as they smash away!">
     <link rel="stylesheet" href="styles.css">
-    <script type="module" defer src="https://cdn.jsdelivr.net/npm/@sudodevnull/datastar"></script>
+    <script type="module" defer src="https://cdn.jsdelivr.net/gh/starfederation/datastar@v1.0.0-RC.7/bundles/datastar.js"></script>
 </head>
 <body>
     <!-- Header/Navigation -->
-    <header class="header" data-signals='{"mobileMenuOpen": false}'>
+    <header class="header" data-signals="{mobileMenuOpen: false}">
         <nav class="nav-container">
             <div class="logo">
                 <h1>🎨 BabySmash!</h1>
             </div>
-            <button 
-                class="mobile-menu-toggle" 
-                data-on:click="mobileMenuOpen = !mobileMenuOpen"
+            <button
+                class="mobile-menu-toggle"
+                data-on:click="$mobileMenuOpen = !$mobileMenuOpen"
                 aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu" data-bind:class="mobileMenuOpen ? 'nav-menu-open' : ''">
+            <ul class="nav-menu" data-class:nav-menu-open="$mobileMenuOpen">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#download" class="nav-link">Download</a></li>
@@ -129,53 +129,53 @@
         <div class="container">
             <h2 class="section-title">Babies Playing BabySmash!</h2>
             <p class="section-subtitle">See how much fun babies have with BabySmash!</p>
-            <div class="videos-grid" data-signals='{"selectedVideo": "K08XmslFZCA"}'>
+            <div class="videos-grid" data-signals="{selectedVideo: 'K08XmslFZCA'}">
                 <div class="video-main">
                     <div class="video-wrapper">
-                        <iframe 
-                            data-bind:src="`https://www.youtube.com/embed/${selectedVideo}`"
-                            frameborder="0" 
+                        <iframe
+                            data-attr:src="`https://www.youtube.com/embed/${$selectedVideo}`"
+                            frameborder="0"
                             referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
                 </div>
                 <div class="video-thumbnails">
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'K08XmslFZCA'"
-                        data-bind:class="selectedVideo === 'K08XmslFZCA' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'K08XmslFZCA'">
                         <img src="https://img.youtube.com/vi/K08XmslFZCA/mqdefault.jpg" alt="Video 1">
                     </button>
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'vEwk5e0LiAM'"
-                        data-bind:class="selectedVideo === 'vEwk5e0LiAM' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'vEwk5e0LiAM'">
                         <img src="https://img.youtube.com/vi/vEwk5e0LiAM/mqdefault.jpg" alt="Video 2">
                     </button>
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'FbZIobQeEHk'"
-                        data-bind:class="selectedVideo === 'FbZIobQeEHk' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'FbZIobQeEHk'">
                         <img src="https://img.youtube.com/vi/FbZIobQeEHk/mqdefault.jpg" alt="Video 3">
                     </button>
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'T_Y9zc5Kz0Y'"
-                        data-bind:class="selectedVideo === 'T_Y9zc5Kz0Y' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'T_Y9zc5Kz0Y'">
                         <img src="https://img.youtube.com/vi/T_Y9zc5Kz0Y/mqdefault.jpg" alt="Video 4">
                     </button>
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'sigUa3gXyK0'"
-                        data-bind:class="selectedVideo === 'sigUa3gXyK0' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'sigUa3gXyK0'">
                         <img src="https://img.youtube.com/vi/sigUa3gXyK0/mqdefault.jpg" alt="Video 5">
                     </button>
-                    <button 
-                        class="video-thumb" 
+                    <button
+                        class="video-thumb"
                         data-on:click="$selectedVideo = 'RDgoRUwLY9M'"
-                        data-bind:class="selectedVideo === 'RDgoRUwLY9M' ? 'active' : ''">
+                        data-class:active="$selectedVideo === 'RDgoRUwLY9M'">
                         <img src="https://img.youtube.com/vi/RDgoRUwLY9M/mqdefault.jpg" alt="Video 6">
                     </button>
                 </div>
@@ -186,54 +186,54 @@
 
     <!-- Screenshots Section -->
     <section id="screenshots" class="screenshots">
-        <div class="container">
+        <div class="container" data-signals="{selectedImage: 0}">
             <h2 class="section-title">See BabySmash! in Action</h2>
-            <div class="screenshot-gallery" data-signals='{"selectedImage": 0}'>
+            <div class="screenshot-gallery">
                 <div class="gallery-main">
-                    <img 
-                        data-bind:src="selectedImage === 0 ? 'images/screenshot1.jpg' : selectedImage === 1 ? 'images/optionsdialog.png' : 'images/screenshot2.jpg'"
-                        data-bind:alt="selectedImage === 0 ? 'BabySmash in action' : selectedImage === 1 ? 'Options dialog' : 'Screen full of shapes'"
+                    <img
+                        data-attr:src="$selectedImage === 0 ? 'images/screenshot1.jpg' : $selectedImage === 1 ? 'images/optionsdialog.png' : 'images/screenshot2.jpg'"
+                        data-attr:alt="$selectedImage === 0 ? 'BabySmash in action' : $selectedImage === 1 ? 'Options dialog' : 'Screen full of shapes'"
                         class="gallery-main-image">
                     <div class="gallery-nav">
-                        <button 
-                            class="gallery-prev" 
-                            data-on:click="$selectedImage = selectedImage - 1 + 3) % 3"
+                        <button
+                            class="gallery-prev"
+                            data-on:click="$selectedImage = ($selectedImage - 1 + 3) % 3"
                             aria-label="Previous image">
                             ‹
                         </button>
-                        <button 
-                            class="gallery-next" 
-                            data-on:click="$selectedImage = selectedImage + 1) % 3"
+                        <button
+                            class="gallery-next"
+                            data-on:click="$selectedImage = ($selectedImage + 1) % 3"
                             aria-label="Next image">
                             ›
                         </button>
                     </div>
                 </div>
                 <div class="gallery-thumbs">
-                    <button 
+                    <button
                         data-on:click="$selectedImage = 0"
-                        data-bind:class="selectedImage === 0 ? 'active' : ''"
+                        data-class:active="$selectedImage === 0"
                         class="gallery-thumb">
                         <img src="images/screenshot1.jpg" alt="Screenshot 1">
                     </button>
-                    <button 
+                    <button
                         data-on:click="$selectedImage = 1"
-                        data-bind:class="selectedImage === 1 ? 'active' : ''"
+                        data-class:active="$selectedImage === 1"
                         class="gallery-thumb">
                         <img src="images/optionsdialog.png" alt="Options dialog">
                     </button>
-                    <button 
+                    <button
                         data-on:click="$selectedImage = 2"
-                        data-bind:class="selectedImage === 2 ? 'active' : ''"
+                        data-class:active="$selectedImage === 2"
                         class="gallery-thumb">
                         <img src="images/screenshot2.jpg" alt="Screenshot 2">
                     </button>
                 </div>
             </div>
             <div class="screenshot-descriptions">
-                <p data-show="selectedImage === 0">Colorful shapes, letters, and numbers appear as your baby types!</p>
-                <p data-show="selectedImage === 1">Customize BabySmash with various options - shapes can laugh or announce what they are!</p>
-                <p data-show="selectedImage === 2">Set how many shapes fill the screen before it clears automatically.</p>
+                <p data-show="$selectedImage === 0">Colorful shapes, letters, and numbers appear as your baby types!</p>
+                <p data-show="$selectedImage === 1">Customize BabySmash with various options - shapes can laugh or announce what they are!</p>
+                <p data-show="$selectedImage === 2">Set how many shapes fill the screen before it clears automatically.</p>
             </div>
         </div>
     </section>

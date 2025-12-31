@@ -108,8 +108,7 @@ body {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #FFE66D 100%);
-    padding: 6rem 2rem;
-    min-height: 80vh;
+    padding: 3rem 2rem;
     display: flex;
     align-items: center;
 }
@@ -119,7 +118,7 @@ body {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     align-items: center;
 }
 

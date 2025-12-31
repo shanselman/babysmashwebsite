@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datastar RC.7 Click Handler Test</title>
+    <script type="module" defer src="https://cdn.jsdelivr.net/gh/starfederation/datastar@v1.0.0-RC.7/bundles/datastar.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: 2px solid #ccc;
+            background: white;
+            cursor: pointer;
+        }
+        button.active {
+            border-color: red;
+            background: #ffe0e0;
+            font-weight: bold;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #333;
+            margin: 20px 0;
+        }
+        .debug {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" data-signals="{selectedVideo: 'video1', clickCount: 0}">
+        <h1>Datastar RC.7 Click Handler Test</h1>
+
+        <div class="debug">
+            <strong>Current Signal Value:</strong>
+            <span data-text="$selectedVideo"></span>
+        </div>
+
+        <div class="debug">
+            <strong>Click Count:</strong>
+            <span data-text="$clickCount"></span>
+        </div>
+
+        <h2>Test Buttons (data-on:click)</h2>
+        <p>Click these buttons. If working, the signal value above should change and the active button should change.</p>
+
+        <button
+            data-on:click="$selectedVideo = 'video1'"
+            data-class:active="$selectedVideo === 'video1'">
+            Video 1
+        </button>
+
+        <button
+            data-on:click="$selectedVideo = 'video2'"
+            data-class:active="$selectedVideo === 'video2'">
+            Video 2
+        </button>
+
+        <button
+            data-on:click="$selectedVideo = 'video3'"
+            data-class:active="$selectedVideo === 'video3'">
+            Video 3
+        </button>
+
+        <button
+            data-on:click="$clickCount = $clickCount + 1">
+            Increment Click Count
+        </button>
+
+        <h2>Reactive Iframe (data-attr:src)</h2>
+        <p>The iframe src should change when you click buttons above (if working):</p>
+        <iframe data-attr:src="`https://example.com/${$selectedVideo}`"></iframe>
+
+        <h2>Expected Behavior</h2>
+        <ul>
+            <li>✅ Initial render: "Video 1" button should have red border and bold text (active class)</li>
+            <li>✅ Initial render: Signal value should show "video1"</li>
+            <li>✅ Initial render: Iframe src should be "https://example.com/video1"</li>
+            <li>❌ Click "Video 2": Signal should update to "video2", active button should change, iframe should update</li>
+            <li>❌ Click "Increment": Click count should increase</li>
+        </ul>
+
+        <h2>Actual Behavior</h2>
+        <p><strong>Initial render works perfectly.</strong></p>
+        <p><strong>Click handlers do NOT work at all.</strong> No errors in console.</p>
+    </div>
+</body>
+</html>
