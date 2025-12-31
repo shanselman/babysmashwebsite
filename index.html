@@ -312,7 +312,8 @@
         // BabySmash Interactive Demo
         const demoArea = document.getElementById('babysmashDemo');
         const shapes = ['circle', 'square', 'triangle'];
-        const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#A8E6CF', '#FF8E53', '#95E1D3'];
+        // Bright colors that contrast well against the gradient background (no greens)
+        const colors = ['#FF6B6B', '#FF8E53', '#FFE66D', '#FF1744', '#FF4081', '#FFD740', '#FFA726'];
         const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
         let shapeCount = 0;
         const maxShapes = 12;
@@ -362,12 +363,20 @@
             demoArea.appendChild(element);
             shapeCount++;
             
-            // Hide instruction after first click
+            // Hide instruction after first interaction
             const instruction = demoArea.querySelector('.demo-instruction');
             if (instruction) {
                 instruction.style.opacity = '0';
                 setTimeout(() => instruction.remove(), 300);
             }
+        }
+
+        // Generate random position within the demo area
+        function getRandomPosition() {
+            const rect = demoArea.getBoundingClientRect();
+            const x = Math.random() * (rect.width - 80); // Account for shape size
+            const y = Math.random() * (rect.height - 80);
+            return { x, y };
         }
 
         // Add click/touch event
@@ -378,16 +387,33 @@
             createShape(x, y);
         });
 
-        // Add initial shapes on load
+        // Start shapes IMMEDIATELY on page load
+        const pos1 = getRandomPosition();
+        createShape(pos1.x, pos1.y);
+        
         setTimeout(() => {
-            createShape(100, 80);
-        }, 500);
+            const pos2 = getRandomPosition();
+            createShape(pos2.x, pos2.y);
+        }, 100);
+        
         setTimeout(() => {
-            createShape(250, 150);
-        }, 800);
-        setTimeout(() => {
-            createShape(150, 250);
-        }, 1100);
+            const pos3 = getRandomPosition();
+            createShape(pos3.x, pos3.y);
+        }, 200);
+
+        // Idle animation: continuously add shapes if no interaction
+        let lastInteractionTime = Date.now();
+        
+        // Update last interaction time on click
+        demoArea.addEventListener('click', () => {
+            lastInteractionTime = Date.now();
+        });
+        
+        // Automatically add shapes every 2 seconds
+        setInterval(() => {
+            const pos = getRandomPosition();
+            createShape(pos.x, pos.y);
+        }, 2000);
     </script>
 </body>
 </html>
