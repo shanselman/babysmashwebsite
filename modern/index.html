@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabySmash! - Fun and Safe Computer Play for Babies & Toddlers</title>
+    <meta name="description" content="BabySmash! lets babies and toddlers safely play with your keyboard. Colorful shapes, letters, and numbers appear as they smash away!">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" defer src="https://cdn.jsdelivr.net/npm/@sudodevnull/datastar"></script>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header" data-signals='{"mobileMenuOpen": false}'>
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>🎨 BabySmash!</h1>
+            </div>
+            <button 
+                class="mobile-menu-toggle" 
+                data-on:click="$mobileMenuOpen = !$mobileMenuOpen"
+                aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" data-bind:class="$mobileMenuOpen ? 'nav-menu-open' : ''">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#download" class="nav-link">Download</a></li>
+                <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="#screenshots" class="nav-link">Screenshots</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">Baby-Proof Computer Fun!</h2>
+                <p class="hero-subtitle">Let your little ones explore the keyboard safely while learning shapes, colors, letters, and numbers.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">Download Free</a>
+                    <a href="#videos" class="btn btn-secondary">Watch Videos</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="shape-demo">
+                    <div class="demo-shape circle" style="background: #FF6B6B;"></div>
+                    <div class="demo-shape square" style="background: #4ECDC4;"></div>
+                    <div class="demo-shape triangle" style="background: #FFE66D;"></div>
+                    <div class="demo-letter">A</div>
+                    <div class="demo-number">5</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Babies Love BabySmash!</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>Smash Any Keys</h3>
+                    <p>Let your baby bang on the keyboard - every key press creates colorful magic!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Colorful Shapes</h3>
+                    <p>Beautiful circles, squares, triangles, and more appear with vibrant colors.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔤</div>
+                    <h3>Letters & Numbers</h3>
+                    <p>Learn the alphabet and numbers through playful interaction.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Completely Safe</h3>
+                    <p>Locks out Windows Key, Ctrl-Esc, and Alt-Tab to protect your computer.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">😊</div>
+                    <h3>Keeps Babies Happy</h3>
+                    <p>Fun sounds and animations that delight babies and toddlers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Always Improving</h3>
+                    <p>Regular updates with new features based on parent feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2 class="section-title">Get BabySmash! Now</h2>
+            <p class="download-subtitle">100% Free - No Ads - Open Source</p>
+            <div class="download-content">
+                <div class="download-card">
+                    <h3>Windows PC</h3>
+                    <p>Works on Windows 7, 8, 10, and 11</p>
+                    <div class="download-buttons">
+                        <a href="https://hanselman.com/babysmash/setup.exe" class="btn btn-primary btn-large">
+                            📥 Download Installer
+                        </a>
+                        <a href="https://hanselman.com/babysmash/BabySmash.application" class="btn btn-secondary">
+                            🚀 Launch via ClickOnce
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="support-section">
+                <p>Enjoy BabySmash? Consider supporting development!</p>
+                <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donate-form">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="scott@hanselman.com">
+                    <input type="hidden" name="item_name" value="BabySmash!">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="amount" value="8.00">
+                    <button type="submit" class="btn btn-donate">
+                        ❤️ Support BabySmash
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2 class="section-title">Babies Playing BabySmash!</h2>
+            <p class="section-subtitle">See how much fun babies have with BabySmash!</p>
+            <div class="videos-grid" data-signals='{"selectedVideo": "K08XmslFZCA"}'>
+                <div class="video-main">
+                    <div class="video-wrapper">
+                        <iframe 
+                            data-bind:src="`https://www.youtube.com/embed/${$selectedVideo}`"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="video-thumbnails">
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'K08XmslFZCA'"
+                        data-bind:class="$selectedVideo === 'K08XmslFZCA' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/K08XmslFZCA/mqdefault.jpg" alt="Video 1">
+                    </button>
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'vEwk5e0LiAM'"
+                        data-bind:class="$selectedVideo === 'vEwk5e0LiAM' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/vEwk5e0LiAM/mqdefault.jpg" alt="Video 2">
+                    </button>
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'FbZIobQeEHk'"
+                        data-bind:class="$selectedVideo === 'FbZIobQeEHk' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/FbZIobQeEHk/mqdefault.jpg" alt="Video 3">
+                    </button>
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'T_Y9zc5Kz0Y'"
+                        data-bind:class="$selectedVideo === 'T_Y9zc5Kz0Y' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/T_Y9zc5Kz0Y/mqdefault.jpg" alt="Video 4">
+                    </button>
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'sigUa3gXyK0'"
+                        data-bind:class="$selectedVideo === 'sigUa3gXyK0' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/sigUa3gXyK0/mqdefault.jpg" alt="Video 5">
+                    </button>
+                    <button 
+                        class="video-thumb" 
+                        data-on:click="$selectedVideo = 'RDgoRUwLY9M'"
+                        data-bind:class="$selectedVideo === 'RDgoRUwLY9M' ? 'active' : ''">
+                        <img src="https://img.youtube.com/vi/RDgoRUwLY9M/mqdefault.jpg" alt="Video 6">
+                    </button>
+                </div>
+            </div>
+            <p class="video-cta">Have a video of your baby playing? <a href="https://twitter.com/shanselman">Share it with us!</a></p>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title">See BabySmash! in Action</h2>
+            <div class="screenshot-gallery" data-signals='{"selectedImage": 0}'>
+                <div class="gallery-main">
+                    <img 
+                        data-bind:src="[$selectedImage === 0 ? '../images/screenshot1.jpg' : $selectedImage === 1 ? '../images/optionsdialog.png' : '../images/screenshot2.jpg']"
+                        data-bind:alt="[$selectedImage === 0 ? 'BabySmash in action' : $selectedImage === 1 ? 'Options dialog' : 'Screen full of shapes']"
+                        class="gallery-main-image">
+                    <div class="gallery-nav">
+                        <button 
+                            class="gallery-prev" 
+                            data-on:click="$selectedImage = ($selectedImage - 1 + 3) % 3"
+                            aria-label="Previous image">
+                            ‹
+                        </button>
+                        <button 
+                            class="gallery-next" 
+                            data-on:click="$selectedImage = ($selectedImage + 1) % 3"
+                            aria-label="Next image">
+                            ›
+                        </button>
+                    </div>
+                </div>
+                <div class="gallery-thumbs">
+                    <button 
+                        data-on:click="$selectedImage = 0"
+                        data-bind:class="$selectedImage === 0 ? 'active' : ''"
+                        class="gallery-thumb">
+                        <img src="../images/screenshot1.jpg" alt="Screenshot 1">
+                    </button>
+                    <button 
+                        data-on:click="$selectedImage = 1"
+                        data-bind:class="$selectedImage === 1 ? 'active' : ''"
+                        class="gallery-thumb">
+                        <img src="../images/optionsdialog.png" alt="Options dialog">
+                    </button>
+                    <button 
+                        data-on:click="$selectedImage = 2"
+                        data-bind:class="$selectedImage === 2 ? 'active' : ''"
+                        class="gallery-thumb">
+                        <img src="../images/screenshot2.jpg" alt="Screenshot 2">
+                    </button>
+                </div>
+            </div>
+            <div class="screenshot-descriptions">
+                <p data-show="$selectedImage === 0">Colorful shapes, letters, and numbers appear as your baby types!</p>
+                <p data-show="$selectedImage === 1">Customize BabySmash with various options - shapes can laugh or announce what they are!</p>
+                <p data-show="$selectedImage === 2">Set how many shapes fill the screen before it clears automatically.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About BabySmash!</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>BabySmash! was created by <a href="https://www.hanselman.com/blog/">Scott Hanselman</a> for his young children, so they could enjoy banging on the keyboard without causing any damage to the computer.</p>
+                    
+                    <p>As babies smash on the keyboard, colored shapes, letters, and numbers appear on the screen. BabySmash! locks out the Windows Key, Ctrl-Esc, and Alt-Tab so your baby can't exit the application accidentally.</p>
+                    
+                    <p>This project is a loving homage to the excellent <a href="http://alphababy.sourceforge.net/">AlphaBaby</a> for Macintosh. BabySmash! is completely free and open source!</p>
+                    
+                    <h3>Quick Tips</h3>
+                    <ul class="tips-list">
+                        <li><strong>Exit:</strong> Press ALT-F4 to close the application</li>
+                        <li><strong>Options:</strong> Press Shift-Ctrl-Alt-O to open settings</li>
+                        <li><strong>Feedback:</strong> Have ideas or feedback? <a href="https://www.hanselman.com/about">Contact Scott</a></li>
+                    </ul>
+                </div>
+                <div class="about-award">
+                    <div class="award-badge">
+                        <a href="https://babysmash.informer.com/" target="_blank">
+                            <img src="https://img.informer.com/awards/si-award-epick5.png" 
+                                 alt="Software Informer Editor's pick award" 
+                                 width="170" height="170">
+                        </a>
+                        <p>Editor's Pick Award</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 <a href="https://www.hanselman.com/">Scott Hanselman</a> - All Rights Reserved</p>
+            <p>Made with ❤️ for babies and toddlers everywhere</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.querySelector('[data-signals]').dispatchEvent(
+                        new CustomEvent('datastar-signal', { detail: { mobileMenuOpen: false } })
+                    );
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
