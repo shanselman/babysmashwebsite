@@ -105,14 +105,11 @@
                         <a href="https://hanselman.com/babysmash/setup.exe" class="btn btn-primary btn-large">
                             📥 Download Installer
                         </a>
-                        <a href="https://hanselman.com/babysmash/BabySmash.application" class="btn btn-secondary">
-                            🚀 Launch via ClickOnce
-                        </a>
                     </div>
                 </div>
             </div>
             <div class="support-section">
-                <p>Enjoy BabySmash? Consider supporting development!</p>
+                <p>BabySmash is free, but you can feel free to buy me a Taco!</p>
                 <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donate-form">
                     <input type="hidden" name="cmd" value="_xclick">
                     <input type="hidden" name="business" value="scott@hanselman.com">
@@ -120,7 +117,7 @@
                     <input type="hidden" name="currency_code" value="USD">
                     <input type="hidden" name="amount" value="8.00">
                     <button type="submit" class="btn btn-donate">
-                        ❤️ Support BabySmash
+                        💵 Paypal $8
                     </button>
                 </form>
             </div>
@@ -138,6 +135,7 @@
                         <iframe 
                             data-bind:src="`https://www.youtube.com/embed/${$selectedVideo}`"
                             frameborder="0" 
+                            referrerpolicy="strict-origin-when-cross-origin"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                         </iframe>
@@ -314,9 +312,9 @@
         const shapes = ['circle', 'square', 'triangle'];
         // Bright colors that contrast well against the gradient background (no greens)
         const colors = ['#FF6B6B', '#FF8E53', '#FFE66D', '#FF1744', '#FF4081', '#FFD740', '#FFA726'];
-        const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
         let shapeCount = 0;
-        const maxShapes = 12;
+        const maxShapes = 20;
 
         function createShape(x, y) {
             if (shapeCount >= maxShapes) {
@@ -409,11 +407,11 @@
             lastInteractionTime = Date.now();
         });
         
-        // Automatically add shapes every 2 seconds
+        // Automatically add shapes every 1 second (double the frequency!)
         setInterval(() => {
             const pos = getRandomPosition();
             createShape(pos.x, pos.y);
-        }, 2000);
+        }, 1000);
     </script>
 </body>
 </html>
