@@ -1,0 +1,23 @@
+# Temporary files
+*.tmp
+*.log
+*~
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# OS files
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Development
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
