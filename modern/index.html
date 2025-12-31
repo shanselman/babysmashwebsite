@@ -46,12 +46,8 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="shape-demo">
-                    <div class="demo-shape circle" style="background: #FF6B6B;"></div>
-                    <div class="demo-shape square" style="background: #4ECDC4;"></div>
-                    <div class="demo-shape triangle" style="background: #FFE66D;"></div>
-                    <div class="demo-letter">A</div>
-                    <div class="demo-number">5</div>
+                <div class="babysmash-demo" id="babysmashDemo">
+                    <div class="demo-instruction">Click or tap anywhere to play!</div>
                 </div>
             </div>
         </div>
@@ -322,6 +318,86 @@
                 }
             });
         });
+
+        // BabySmash Interactive Demo
+        const demoArea = document.getElementById('babysmashDemo');
+        const shapes = ['circle', 'square', 'triangle'];
+        const colors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#A8E6CF', '#FF8E53', '#95E1D3'];
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+        let shapeCount = 0;
+        const maxShapes = 12;
+
+        function createShape(x, y) {
+            if (shapeCount >= maxShapes) {
+                // Clear some shapes to make room
+                const elements = demoArea.querySelectorAll('.demo-element');
+                if (elements.length > 3) {
+                    for (let i = 0; i < 3; i++) {
+                        elements[i].remove();
+                    }
+                    shapeCount -= 3;
+                }
+            }
+
+            const element = document.createElement('div');
+            element.className = 'demo-element';
+            
+            // Randomly choose between shape or letter
+            const isLetter = Math.random() > 0.5;
+            
+            if (isLetter) {
+                const letter = letters[Math.floor(Math.random() * letters.length)];
+                element.classList.add('demo-letter-item');
+                element.textContent = letter;
+                element.style.color = colors[Math.floor(Math.random() * colors.length)];
+            } else {
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                element.classList.add('demo-shape-item', shape);
+                element.style.background = color;
+                
+                if (shape === 'triangle') {
+                    element.style.borderBottomColor = color;
+                }
+            }
+            
+            // Position the element
+            element.style.left = x + 'px';
+            element.style.top = y + 'px';
+            
+            // Random animation duration for variety
+            const duration = 3 + Math.random() * 2;
+            element.style.animationDuration = duration + 's';
+            
+            demoArea.appendChild(element);
+            shapeCount++;
+            
+            // Hide instruction after first click
+            const instruction = demoArea.querySelector('.demo-instruction');
+            if (instruction) {
+                instruction.style.opacity = '0';
+                setTimeout(() => instruction.remove(), 300);
+            }
+        }
+
+        // Add click/touch event
+        demoArea.addEventListener('click', (e) => {
+            const rect = demoArea.getBoundingClientRect();
+            const x = e.clientX - rect.left - 40; // Center the shape
+            const y = e.clientY - rect.top - 40;
+            createShape(x, y);
+        });
+
+        // Add initial shapes on load
+        setTimeout(() => {
+            createShape(100, 80);
+        }, 500);
+        setTimeout(() => {
+            createShape(250, 150);
+        }, 800);
+        setTimeout(() => {
+            createShape(150, 250);
+        }, 1100);
     </script>
 </body>
 </html>
