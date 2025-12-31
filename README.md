@@ -16,6 +16,7 @@ A complete reimagining of the BabySmash! website with a fresh, modern design bui
 - Playful shapes and visual elements
 
 🎨 **Interactive Elements**
+- Interactive BabySmash demo in hero section - click to create shapes!
 - Video gallery with clickable thumbnails
 - Screenshot carousel with navigation
 - Mobile-friendly navigation menu
@@ -30,9 +31,10 @@ A complete reimagining of the BabySmash! website with a fresh, modern design bui
 ## Structure
 
 ```
-modern/
+.
 ├── index.html    # Main HTML file with all content
 ├── styles.css    # All styling and animations
+├── images/       # Images and screenshots
 └── README.md     # This file
 ```
 
@@ -51,11 +53,11 @@ npx http-server
 php -S localhost:8000
 ```
 
-Then visit `http://localhost:8000/modern/` in your browser.
+Then visit `http://localhost:8000/` in your browser.
 
 ## Sections
 
-1. **Home** - Hero section with call-to-action
+1. **Home** - Hero section with interactive demo and call-to-action
 2. **Features** - 6 key features of BabySmash!
 3. **Download** - Download links and support options
 4. **Videos** - Interactive video gallery
