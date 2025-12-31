@@ -17,13 +17,13 @@
             </div>
             <button 
                 class="mobile-menu-toggle" 
-                data-on:click="$mobileMenuOpen = !$mobileMenuOpen"
+                data-on:click="mobileMenuOpen = !mobileMenuOpen"
                 aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu" data-bind-class="$mobileMenuOpen ? 'nav-menu-open' : ''">
+            <ul class="nav-menu" data-bind:class="mobileMenuOpen ? 'nav-menu-open' : ''">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#download" class="nav-link">Download</a></li>
@@ -133,7 +133,7 @@
                 <div class="video-main">
                     <div class="video-wrapper">
                         <iframe 
-                            data-bind-src="`https://www.youtube.com/embed/${$selectedVideo}`"
+                            data-bind:src="`https://www.youtube.com/embed/${selectedVideo}`"
                             frameborder="0" 
                             referrerpolicy="strict-origin-when-cross-origin"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -145,37 +145,37 @@
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'K08XmslFZCA'"
-                        data-bind-class="$selectedVideo === 'K08XmslFZCA' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'K08XmslFZCA' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/K08XmslFZCA/mqdefault.jpg" alt="Video 1">
                     </button>
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'vEwk5e0LiAM'"
-                        data-bind-class="$selectedVideo === 'vEwk5e0LiAM' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'vEwk5e0LiAM' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/vEwk5e0LiAM/mqdefault.jpg" alt="Video 2">
                     </button>
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'FbZIobQeEHk'"
-                        data-bind-class="$selectedVideo === 'FbZIobQeEHk' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'FbZIobQeEHk' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/FbZIobQeEHk/mqdefault.jpg" alt="Video 3">
                     </button>
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'T_Y9zc5Kz0Y'"
-                        data-bind-class="$selectedVideo === 'T_Y9zc5Kz0Y' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'T_Y9zc5Kz0Y' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/T_Y9zc5Kz0Y/mqdefault.jpg" alt="Video 4">
                     </button>
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'sigUa3gXyK0'"
-                        data-bind-class="$selectedVideo === 'sigUa3gXyK0' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'sigUa3gXyK0' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/sigUa3gXyK0/mqdefault.jpg" alt="Video 5">
                     </button>
                     <button 
                         class="video-thumb" 
                         data-on:click="$selectedVideo = 'RDgoRUwLY9M'"
-                        data-bind-class="$selectedVideo === 'RDgoRUwLY9M' ? 'active' : ''">
+                        data-bind:class="selectedVideo === 'RDgoRUwLY9M' ? 'active' : ''">
                         <img src="https://img.youtube.com/vi/RDgoRUwLY9M/mqdefault.jpg" alt="Video 6">
                     </button>
                 </div>
@@ -191,19 +191,19 @@
             <div class="screenshot-gallery" data-signals='{"selectedImage": 0}'>
                 <div class="gallery-main">
                     <img 
-                        data-bind-src="$selectedImage === 0 ? 'images/screenshot1.jpg' : $selectedImage === 1 ? 'images/optionsdialog.png' : 'images/screenshot2.jpg'"
-                        data-bind-alt="$selectedImage === 0 ? 'BabySmash in action' : $selectedImage === 1 ? 'Options dialog' : 'Screen full of shapes'"
+                        data-bind:src="selectedImage === 0 ? 'images/screenshot1.jpg' : selectedImage === 1 ? 'images/optionsdialog.png' : 'images/screenshot2.jpg'"
+                        data-bind:alt="selectedImage === 0 ? 'BabySmash in action' : selectedImage === 1 ? 'Options dialog' : 'Screen full of shapes'"
                         class="gallery-main-image">
                     <div class="gallery-nav">
                         <button 
                             class="gallery-prev" 
-                            data-on:click="$selectedImage = ($selectedImage - 1 + 3) % 3"
+                            data-on:click="$selectedImage = selectedImage - 1 + 3) % 3"
                             aria-label="Previous image">
                             ‹
                         </button>
                         <button 
                             class="gallery-next" 
-                            data-on:click="$selectedImage = ($selectedImage + 1) % 3"
+                            data-on:click="$selectedImage = selectedImage + 1) % 3"
                             aria-label="Next image">
                             ›
                         </button>
@@ -212,28 +212,28 @@
                 <div class="gallery-thumbs">
                     <button 
                         data-on:click="$selectedImage = 0"
-                        data-bind-class="$selectedImage === 0 ? 'active' : ''"
+                        data-bind:class="selectedImage === 0 ? 'active' : ''"
                         class="gallery-thumb">
                         <img src="images/screenshot1.jpg" alt="Screenshot 1">
                     </button>
                     <button 
                         data-on:click="$selectedImage = 1"
-                        data-bind-class="$selectedImage === 1 ? 'active' : ''"
+                        data-bind:class="selectedImage === 1 ? 'active' : ''"
                         class="gallery-thumb">
                         <img src="images/optionsdialog.png" alt="Options dialog">
                     </button>
                     <button 
                         data-on:click="$selectedImage = 2"
-                        data-bind-class="$selectedImage === 2 ? 'active' : ''"
+                        data-bind:class="selectedImage === 2 ? 'active' : ''"
                         class="gallery-thumb">
                         <img src="images/screenshot2.jpg" alt="Screenshot 2">
                     </button>
                 </div>
             </div>
             <div class="screenshot-descriptions">
-                <p data-show="$selectedImage === 0">Colorful shapes, letters, and numbers appear as your baby types!</p>
-                <p data-show="$selectedImage === 1">Customize BabySmash with various options - shapes can laugh or announce what they are!</p>
-                <p data-show="$selectedImage === 2">Set how many shapes fill the screen before it clears automatically.</p>
+                <p data-show="selectedImage === 0">Colorful shapes, letters, and numbers appear as your baby types!</p>
+                <p data-show="selectedImage === 1">Customize BabySmash with various options - shapes can laugh or announce what they are!</p>
+                <p data-show="selectedImage === 2">Set how many shapes fill the screen before it clears automatically.</p>
             </div>
         </div>
     </section>
