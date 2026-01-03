@@ -320,8 +320,7 @@ main {
 }
 
 .video-card__link {
-  display: grid;
-  grid-template-rows: auto auto;
+  display: block;
   text-decoration: none;
   color: inherit;
 }
@@ -362,11 +361,6 @@ main {
   opacity: 1;
 }
 
-.video-card__caption {
-  padding: 1.1rem 1.25rem 1.3rem;
-  font-weight: 600;
-  color: var(--text);
-}
 
 .gallery {
   display: grid;
