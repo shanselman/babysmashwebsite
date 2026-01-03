@@ -1,114 +1,478 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Name       : Natures Charm
-Description: A two-column, fixed-width design.
-Version    : 1.0
-Released   : 20080125
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Baby Smash! by Scott Hanselman</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
-</head>
-<body>
-<!-- start header -->
-<div id="header">
-	<div id="logo">
-		<h1><a href="https://www.hanselman.com/babysmash/">Baby Smash!</a></h1>
-		<h2><a href="screenies.htm">Baby-Proof computer fun</a></h2>
-	</div>
-	<div id="menu">
-		<ul>
-			<li class="active"><a href="index.html" accesskey="1" title="">Home</a></li>
-			<li><a href="download.htm" accesskey="2" title="">Download</a></li>
-			<li><a href="videos.htm" accesskey="3" title="">Videos</a></li>
-			<li><a href="screenies.htm" accesskey="4" title="">Screenshots</a></li>
-			<li><a href="about.htm" accesskey="5" title="">About</a></li>
-		</ul>
-	</div>
-</div>
-<!-- end header -->
-
-<!-- start page -->
-<div id="page">
-	<!-- start content -->
-	<div id="content">
-		<div class="post">
-			<p><a href="https://www.hanselman.com/babysmash/screenies.htm"><img src="images/img08medium.jpg" alt=""  /></a></p>
-			<h1 class="title">Welcome to BabySmash!</h1>
-			<p class="byline"><small>by <a href="https://www.hanselman.com/blog/">Scott</a></small></p>
-			<div class="entry">
-								<p>As babies smash on the keyboard, colored shapes, letters and numbers appear on the screen. Baby Smash will lock out the Windows Key, as well as Ctrl-Esc and Alt-Tab so your baby can't get out of the application. Pressing ALT-F4 will exit the application and Shift-Ctrl-Alt-O brings up the options dialog. I'm always interested in your <a href="http://feedback.babysmash.com/">feedback</a> as well!</p>
-
-				<p>I wrote BabySmash! for my 2 year old and 5 month old so they could bang on the keyboards of my Windows machines without hurting anything. It's a copy/homage of the very fine and free <a href="http://alphababy.sourceforge.net/">AlphaBaby</a> for the Macintosh. BabySmash is <i>free</i> also and the source code is available on <A href="https://www.hanselman.com/blog">my blog</A> soon. Enjoy! :)</p>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Baby Smash! • Delightful keyboard fun for curious kiddos</title>
+		<meta
+			name="description"
+			content="Baby Smash! is the playful, baby-proof keyboard experience that turns every key press into colorful giggles."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<canvas
+			id="background-canvas"
+			class="background-canvas"
+			aria-hidden="true"
+		></canvas>
+		<div class="site-shell">
+			<div id="top" class="anchor-top" aria-hidden="true" tabindex="-1"></div>
+			<header class="site-header" id="site-header">
+			<div class="site-header__brand">
+				<a class="site-header__logo" href="#top" aria-label="Baby Smash home">
+					<span aria-hidden="true">🍼</span>
+					<span>Baby Smash!</span>
+				</a>
+				<p class="site-header__tagline">Free baby-proof computer fun since 2008</p>
 			</div>
-			<p class="meta"><a href="download.htm" class="more">Download Now! It's FREE.</a> </p>
-		</div>
-		<script src="http://babysmash.uservoice.com/pages/general/widgets/top3.js" type="text/javascript"></script>
-	</div>
-	<!-- end content -->
-	<!-- start sidebar -->
-	<div id="sidebar">
-		<ul>
-			<li>
-				<h2>Features</h2>
-				<ul>
-					<li>Smash on any keys<!/li>
-					<li>Draws letters, shapes, numbers<!/li>
-					<li>Keeps babies happy</li>
-					<li>Won't harm your computer</li>
-					<li>New features added often</li>
+			<nav class="site-header__nav" aria-label="Primary navigation">
+				<a href="#features">Features</a>
+				<a href="#download">Download</a>
+				<a href="#videos">Videos</a>
+				<a href="#screenshots">Screenshots</a>
+				<a href="#about">About</a>
+				<a class="button button--ghost" href="#mini-game">Play now</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero" aria-labelledby="hero-heading">
+				<div class="hero__content">
+					<h1 id="hero-heading">Giggles, colors, and safe smashing.</h1>
+					<p class="hero__lead">
+						Baby Smash! turns every random key press into bright shapes, happy sounds,
+						and numbers that dance across the screen—without letting little ones break your computer.
+					</p>
+					<div class="hero__actions">
+						<a class="button button--primary" href="https://hanselman.com/babysmash/setup.exe">
+							Install for Windows — Free
+						</a>
+						<a class="button button--secondary" href="https://hanselman.com/babysmash/BabySmash.application">
+							Launch with ClickOnce — Free
+						</a>
+						<a class="hero__link" href="#download">System requirements</a>
+					</div>
+					<ul class="hero__details">
+						<li><strong>Keyboard-locked:</strong> keeps little fingers safely in the app.</li>
+						<li><strong>Shapes &amp; sounds:</strong> letters, numbers, and colors instantly appear.</li>
+						<li><strong>Made with ❤️</strong> for curious babies and the grown-ups who love them.</li>
+					</ul>
+				</div>
+				<div class="hero__play" id="mini-game" aria-labelledby="mini-game-heading">
+					<h2 id="mini-game-heading">Smash the keys to paint the sky</h2>
+					<p class="hero__game-subtitle">
+						Every tap or key press fills the background with bold letters and confetti shapes.
+						Sit back and the magic continues all on its own.
+					</p>
+					<p id="mini-game-feedback" class="mini-game__feedback" aria-live="polite">
+						Ready to smash!
+					</p>
+				</div>
+			</section>
+
+			<section class="section" id="features" aria-labelledby="features-heading">
+				<div class="section__intro">
+					<h2 id="features-heading">Why little smashers love it</h2>
+					<p>
+						Baby Smash! is simple, delightful, and safe. Every pop of the keyboard creates
+						a surprise while keeping your desktop locked down.
+					</p>
+				</div>
+				<div class="card-grid">
+					<article class="card">
+						<h3>Safe smashing</h3>
+						<p>Windows keys, Alt+Tab, and the Start menu are disabled so babies stay in the fun.</p>
+					</article>
+					<article class="card">
+						<h3>Colorful learning</h3>
+						<p>Bright shapes, numbers, and letters dance across the screen with every key press.</p>
+					</article>
+					<article class="card">
+						<h3>Customizable fun</h3>
+						<p>Adjust voices, clearing speed, and even how many shapes appear at once.</p>
+					</article>
+					<article class="card">
+						<h3>Built for giggles</h3>
+						<p>Created by Scott Hanselman for his own kids—now loved by families worldwide.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="section section--accent" id="download" aria-labelledby="download-heading">
+				<div class="section__intro">
+					<h2 id="download-heading">Download Baby Smash!</h2>
+					<p>Ready to play? Grab the installer or launch instantly with ClickOnce.</p>
+				</div>
+				<div class="download-options">
+					<a class="button button--primary" href="https://hanselman.com/babysmash/setup.exe">Install now (Free)</a>
+					<a class="button button--secondary" href="https://hanselman.com/babysmash/BabySmash.application">
+						Launch via ClickOnce (Free)
+					</a>
+				</div>
+				<ul class="download-details">
+					<li>Always free—Baby Smash! is a zero-cost treat for families and caregivers.</li>
+					<li>Requires Windows with the .NET Framework (ClickOnce handles setup).</li>
+					<li>Need help? Visit the <a href="http://feedback.babysmash.com/">feedback &amp; support hub</a>.</li>
 				</ul>
-			</li>
-			<li>
-				<h2><a href="download.htm">Free Download</a></h2>
-				<blockquote><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="scott@hanselman.com">
-<input type="hidden" name="item_name" value="BabySmash!">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="amount" value="8.00">
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-</form>
-</blockquote>
-			</li>
-			<li>
-				<h2><a href="https://babysmash.informer.com/">Awards</a></h2>
+				<form
+					class="donate"
+					name="_xclick"
+					action="https://www.paypal.com/cgi-bin/webscr"
+					method="post"
+				>
+					<input type="hidden" name="cmd" value="_xclick" />
+					<input type="hidden" name="business" value="scott@hanselman.com" />
+					<input type="hidden" name="item_name" value="BabySmash!" />
+					<input type="hidden" name="currency_code" value="USD" />
+					<input type="hidden" name="amount" value="8.00" />
+					<button type="submit" class="button button--ghost">Tip the toy box ($8)</button>
+				</form>
+			</section>
 
-				<center><a href="https://babysmash.informer.com/" target="_blank"><img border="0" src="https://img.informer.com/awards/si-award-epick5.png" alt="Software Informer Editor's pick award" height="170" width="170" /></a></center>
-				<!-- <ul>
-					<li><a href="http://feedback.babysmash.com/">Got an idea for BabySmash?</a></li>
-			</ul> -->
-			</li>
+			<section class="section" id="videos" aria-labelledby="videos-heading">
+				<div class="section__intro">
+					<h2 id="videos-heading">Babies in action</h2>
+					<p>See Baby Smash! delight little ones around the world.</p>
+				</div>
+				<div class="video-grid">
+					<article class="video-card">
+						<a
+							href="https://www.youtube.com/watch?v=K08XmslFZCA"
+							target="_blank"
+							rel="noopener"
+							class="video-card__link"
+						>
+							<img
+								src="https://img.youtube.com/vi/K08XmslFZCA/hqdefault.jpg"
+								alt="Preview of Baby Smash gameplay video"
+								loading="lazy"
+							/>
+							<span class="video-card__overlay" aria-hidden="true">
+								<span class="video-card__play">▶</span>
+							</span>
+							<span class="video-card__caption">Watch “Baby Smash gameplay”</span>
+						</a>
+					</article>
+					<article class="video-card">
+						<a
+							href="https://www.youtube.com/watch?v=vEwk5e0LiAM"
+							target="_blank"
+							rel="noopener"
+							class="video-card__link"
+						>
+							<img
+								src="https://img.youtube.com/vi/vEwk5e0LiAM/hqdefault.jpg"
+								alt="Preview of Baby Smash demo video"
+								loading="lazy"
+							/>
+							<span class="video-card__overlay" aria-hidden="true">
+								<span class="video-card__play">▶</span>
+							</span>
+							<span class="video-card__caption">Watch “Baby Smash demo”</span>
+						</a>
+					</article>
+					<article class="video-card">
+						<a
+							href="https://www.youtube.com/watch?v=FbZIobQeEHk"
+							target="_blank"
+							rel="noopener"
+							class="video-card__link"
+						>
+							<img
+								src="https://img.youtube.com/vi/FbZIobQeEHk/hqdefault.jpg"
+								alt="Preview of toddler playing Baby Smash video"
+								loading="lazy"
+							/>
+							<span class="video-card__overlay" aria-hidden="true">
+								<span class="video-card__play">▶</span>
+							</span>
+							<span class="video-card__caption">Watch “Toddler playing Baby Smash”</span>
+						</a>
+					</article>
+				</div>
+			</section>
 
-		</ul>
-	</div>
-	<!-- end sidebar -->
-</div>
-<div style="clear: both; height: 30px">&nbsp;</div>
-<!-- end page -->
-<div id="footer">
-	<p>&copy;2021 Scott Hanselman - All Rights Reserved. &nbsp;&bull;&nbsp; Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
-</div>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-130207-2");
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
+			<section class="section" id="screenshots" aria-labelledby="screenshots-heading">
+				<div class="section__intro">
+					<h2 id="screenshots-heading">Peek inside the app</h2>
+					<p>Explore a few classic Baby Smash! moments straight from the screen.</p>
+				</div>
+				<div class="gallery">
+					<figure>
+						<img src="images/screenshot1.jpg" alt="Colorful Baby Smash letters" loading="lazy" />
+						<figcaption>Letters, numbers, and shapes rain down with each key press.</figcaption>
+					</figure>
+					<figure>
+						<img src="images/optionsdialog.png" alt="Baby Smash options dialog" loading="lazy" />
+						<figcaption>Fine-tune speaking voices, sounds, and clearing speed.</figcaption>
+					</figure>
+					<figure>
+						<img src="images/screenshot2.jpg" alt="Baby Smash joyful shapes" loading="lazy" />
+						<figcaption>Customize how many shapes fill the screen before it clears.</figcaption>
+					</figure>
+				</div>
+			</section>
 
+			<section class="section" id="about" aria-labelledby="about-heading">
+				<div class="section__intro">
+					<h2 id="about-heading">A passion project from Scott Hanselman</h2>
+					<p>
+						Baby Smash! was created in 2008 so Scott’s kids could explore the keyboard safely. Inspired by
+						the Mac classic AlphaBaby, it keeps computers secure while delivering instant joy.
+					</p>
+				</div>
+				<div class="about">
+					<p>
+						The app locks down the Windows key, Ctrl+Esc, and Alt+Tab so nothing important gets closed.
+						Parents can exit anytime with <kbd>Alt</kbd> + <kbd>F4</kbd> or open options with
+						<kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>O</kbd>. Baby Smash! remains free,
+						open to community feedback, and continually refreshed with love from the Hanselman family.
+					</p>
+					<p>
+						Have ideas or want to share a Baby Smash! story? Reach out via
+						<a href="https://www.hanselman.com/about">Scott’s contact page</a> or tag
+						<a href="https://twitter.com/shanselman">@shanselman</a> on social media.
+					</p>
+				</div>
+			</section>
+		</main>
 
+		<footer class="site-footer">
+			<div class="site-footer__inner">
+				<p>&copy; 2026 Scott Hanselman. Baby Smash! is free for families everywhere.</p>
+				<nav aria-label="Footer navigation">
+					<a href="#top">Back to top</a>
+				</nav>
+			</div>
+		</footer>
 
-</body>
+		<audio id="giggle-audio" src="sounds/babygigl2.wav" preload="auto" aria-hidden="true"></audio>
+		</div>
+
+		<script>
+			(() => {
+				const canvas = document.getElementById('background-canvas');
+				if (!canvas || !canvas.getContext) {
+					return;
+				}
+
+				const ctx = canvas.getContext('2d');
+				const feedback = document.getElementById('mini-game-feedback');
+				const baseGiggle = document.getElementById('giggle-audio');
+				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				const palette = ['#FF6B6B', '#FFD166', '#06D6A0', '#118AB2', '#C77DFF', '#FF8FAB'];
+				const shapes = [];
+				const MAX_SHAPES = 200;
+
+				let viewportWidth = window.innerWidth;
+				let viewportHeight = window.innerHeight;
+				let idleTimeoutId;
+
+				const resizeCanvas = () => {
+					const ratio = window.devicePixelRatio || 1;
+					viewportWidth = window.innerWidth;
+					viewportHeight = window.innerHeight;
+					canvas.width = Math.round(viewportWidth * ratio);
+					canvas.height = Math.round(viewportHeight * ratio);
+					ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+				};
+
+				const drawShape = (shape) => {
+					ctx.save();
+					ctx.globalAlpha = shape.alpha;
+					ctx.translate(shape.x, shape.y);
+					ctx.rotate(shape.rotation);
+					ctx.fillStyle = shape.color;
+					ctx.strokeStyle = shape.color;
+					ctx.lineWidth = 4;
+
+					switch (shape.type) {
+						case 'circle': {
+							ctx.beginPath();
+							ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+							ctx.fill();
+							break;
+						}
+						case 'triangle': {
+							ctx.beginPath();
+							ctx.moveTo(0, -shape.size / 2);
+							ctx.lineTo(shape.size / 2, shape.size / 2);
+							ctx.lineTo(-shape.size / 2, shape.size / 2);
+							ctx.closePath();
+							ctx.fill();
+							break;
+						}
+						case 'letter': {
+							ctx.font = `700 ${shape.size}px "Outfit", sans-serif`;
+							ctx.textAlign = 'center';
+							ctx.textBaseline = 'middle';
+							ctx.lineWidth = 6;
+							ctx.strokeStyle = 'rgba(255, 255, 255, 0.65)';
+							ctx.strokeText(shape.value, 0, 0);
+							ctx.fillText(shape.value, 0, 0);
+							break;
+						}
+						default: {
+							ctx.beginPath();
+							ctx.rect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+							ctx.fill();
+						}
+					}
+
+					ctx.restore();
+				};
+
+				const update = () => {
+					ctx.clearRect(0, 0, viewportWidth, viewportHeight);
+
+					shapes.forEach((shape) => {
+						if (!prefersReducedMotion) {
+							shape.y -= shape.floatingSpeed;
+							shape.rotation += shape.rotationSpeed;
+						}
+						shape.alpha -= shape.fadeSpeed;
+					});
+
+					for (let i = shapes.length - 1; i >= 0; i -= 1) {
+						if (shapes[i].alpha <= 0) {
+							shapes.splice(i, 1);
+						}
+					}
+
+					shapes.forEach(drawShape);
+					requestAnimationFrame(update);
+				};
+
+				const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+				const shapesOnly = ['circle', 'square', 'triangle'];
+				const types = [...shapesOnly, 'letter'];
+
+				const randomFrom = (collection) =>
+					collection[Math.floor(Math.random() * collection.length)];
+
+				const playGiggle = () => {
+					if (!baseGiggle) {
+						return;
+					}
+					try {
+						const clone = baseGiggle.cloneNode(true);
+						clone.volume = 0.22;
+						clone.addEventListener('ended', () => clone.remove());
+						document.body.appendChild(clone);
+						clone.play().catch(() => clone.remove());
+					} catch (error) {
+						/* ignore audio playback issues (e.g., user gesture not established) */
+					}
+				};
+
+				const createShape = ({ type, value } = {}) => {
+					const resolvedType = type || randomFrom(types);
+					const width = viewportWidth;
+					const height = viewportHeight;
+					const size = 80 + Math.random() * 80;
+
+					return {
+						type: resolvedType,
+						size,
+						value:
+							resolvedType === 'letter'
+								? (value || randomFrom(letters)).toUpperCase()
+								: '',
+						x: Math.random() * width,
+						y: Math.random() * height,
+						color: randomFrom(palette),
+						rotation: Math.random() * Math.PI,
+						rotationSpeed: prefersReducedMotion ? 0 : (Math.random() - 0.5) * 0.04,
+						floatingSpeed: prefersReducedMotion ? 0 : 0.2 + Math.random() * 0.35,
+						alpha: 1,
+						fadeSpeed: prefersReducedMotion ? 0.03 : 0.006 + Math.random() * 0.006,
+					};
+				};
+
+				const trimOverflow = () => {
+					if (shapes.length > MAX_SHAPES) {
+						shapes.splice(0, shapes.length - MAX_SHAPES);
+					}
+				};
+
+				const scheduleIdleGenerator = () => {
+					if (prefersReducedMotion) {
+						return;
+					}
+					clearTimeout(idleTimeoutId);
+					idleTimeoutId = setTimeout(() => {
+						spawnBurst();
+						scheduleIdleGenerator();
+					}, 1400 + Math.random() * 900);
+				};
+
+				const spawnBurst = (label = '') => {
+					const primaryLetter = label && label.length === 1 ? label : randomFrom(letters);
+
+					shapes.push(
+						createShape({
+							type: 'letter',
+							value: primaryLetter,
+						})
+					);
+
+					const burstCount = 2 + Math.floor(Math.random() * 2);
+					for (let i = 0; i < burstCount; i += 1) {
+						shapes.push(
+							createShape({
+								type: randomFrom(shapesOnly),
+							})
+						);
+					}
+
+					trimOverflow();
+					scheduleIdleGenerator();
+
+					if (feedback) {
+						const message = label
+							? `Smashed "${label.toUpperCase()}" with confetti pals!`
+							: 'Smash! Letters and shapes everywhere!';
+						feedback.textContent = message;
+					}
+				};
+
+				const handleKey = (event) => {
+					if (event.metaKey || event.ctrlKey || event.altKey) {
+						return;
+					}
+					spawnBurst(event.key.length === 1 ? event.key : '★');
+					playGiggle();
+				};
+
+				const handlePointer = () => {
+					spawnBurst();
+					playGiggle();
+				};
+
+				const setup = () => {
+					resizeCanvas();
+					update();
+					document.addEventListener('keydown', handleKey);
+					document.addEventListener('pointerdown', handlePointer);
+					window.addEventListener('resize', resizeCanvas);
+					scheduleIdleGenerator();
+
+					if (!prefersReducedMotion) {
+						for (let i = 0; i < 6; i += 1) {
+							shapes.push(createShape({ type: randomFrom(types) }));
+						}
+					}
+				};
+
+				setup();
+			})();
+		</script>
+	</body>
 </html>
