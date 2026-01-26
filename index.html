@@ -35,8 +35,36 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="styles.css" />
+		<link rel="canonical" href="https://www.babysmash.com/" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+		<meta name="theme-color" content="#ff6b6b" />
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "Baby Smash!",
+			"description": "A playful, baby-proof keyboard experience that turns every key press into colorful giggles.",
+			"applicationCategory": "GameApplication",
+			"operatingSystem": "Windows 10+, Linux",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"url": "https://www.babysmash.com/",
+			"author": {
+				"@type": "Person",
+				"name": "Scott Hanselman",
+				"url": "https://www.hanselman.com/"
+			}
+		}
+		</script>
 	</head>
 	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
 		<canvas
 			id="background-canvas"
 			class="background-canvas"
@@ -62,7 +90,7 @@
 			</nav>
 		</header>
 
-		<main>
+		<main id="main">
 			<section class="hero" aria-labelledby="hero-heading">
 				<div class="hero__content">
 					<h1 id="hero-heading">Giggles, colors, and safe smashing.</h1>
@@ -155,7 +183,7 @@
 					<input type="hidden" name="item_name" value="BabySmash!" />
 					<input type="hidden" name="currency_code" value="USD" />
 					<input type="hidden" name="amount" value="8.00" />
-					<button type="submit" class="button button--ghost">Tip the toy box ($8)</button>
+					<button type="submit" class="button button--ghost">Tip the toy box ($8) and buy Scott some tacos</button>
 				</form>
 			</section>
 
@@ -226,15 +254,15 @@
 				</div>
 				<div class="gallery">
 					<figure>
-						<img src="images/screenshot1.jpg" alt="Colorful Baby Smash letters" loading="lazy" />
+						<img src="images/screenshot1.jpg" alt="Colorful Baby Smash letters" loading="lazy" width="398" height="300" />
 						<figcaption>Letters, numbers, and shapes rain down with each key press.</figcaption>
 					</figure>
 					<figure>
-						<img src="images/optionsdialog.png" alt="Baby Smash options dialog" loading="lazy" />
+						<img src="images/optionsdialog.png" alt="Baby Smash options dialog" loading="lazy" width="629" height="396" />
 						<figcaption>Change sounds, tweak fonts, put goofy faces on shapes, and keep the fun coming.</figcaption>
 					</figure>
 					<figure>
-						<img src="images/screenshot2.jpg" alt="Baby Smash joyful shapes" loading="lazy" />
+						<img src="images/screenshot2.jpg" alt="Baby Smash joyful shapes" loading="lazy" width="398" height="300" />
 						<figcaption>Customize how many shapes fill the screen before it clears.</figcaption>
 					</figure>
 				</div>
@@ -294,6 +322,8 @@
 				let viewportWidth = window.innerWidth;
 				let viewportHeight = window.innerHeight;
 				let idleTimeoutId;
+				let rafId = null;
+				let isRunning = false;
 
 				const resizeCanvas = () => {
 					const ratio = window.devicePixelRatio || 1;
@@ -350,6 +380,8 @@
 				};
 
 				const update = () => {
+					if (!isRunning) return;
+
 					ctx.clearRect(0, 0, viewportWidth, viewportHeight);
 
 					shapes.forEach((shape) => {
@@ -367,7 +399,22 @@
 					}
 
 					shapes.forEach(drawShape);
-					requestAnimationFrame(update);
+					rafId = requestAnimationFrame(update);
+				};
+
+				const startAnimation = () => {
+					if (isRunning) return;
+					isRunning = true;
+					rafId = requestAnimationFrame(update);
+				};
+
+				const stopAnimation = () => {
+					isRunning = false;
+					if (rafId) {
+						cancelAnimationFrame(rafId);
+						rafId = null;
+					}
+					clearTimeout(idleTimeoutId);
 				};
 
 				const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
@@ -467,6 +514,10 @@
 					if (event.metaKey || event.ctrlKey || event.altKey) {
 						return;
 					}
+					const tag = event.target.tagName;
+					if (tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' || tag === 'TEXTAREA') {
+						return;
+					}
 					spawnBurst(event.key.length === 1 ? event.key : '★');
 					playGiggle();
 				};
@@ -478,17 +529,27 @@
 
 				const setup = () => {
 					resizeCanvas();
-					update();
 					document.addEventListener('keydown', handleKey);
 					document.addEventListener('pointerdown', handlePointer);
 					window.addEventListener('resize', resizeCanvas);
-					scheduleIdleGenerator();
+
+					document.addEventListener('visibilitychange', () => {
+						if (document.hidden) {
+							stopAnimation();
+						} else {
+							startAnimation();
+							scheduleIdleGenerator();
+						}
+					});
 
 					if (!prefersReducedMotion) {
 						for (let i = 0; i < 6; i += 1) {
 							shapes.push(createShape({ type: randomFrom(types) }));
 						}
 					}
+
+					startAnimation();
+					scheduleIdleGenerator();
 				};
 
 				setup();

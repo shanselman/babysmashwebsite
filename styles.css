@@ -19,6 +19,27 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 96px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 1rem;
+}
+
 body {
   margin: 0;
   font-family: "Outfit", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -66,8 +87,14 @@ a {
 }
 
 a:hover,
- a:focus {
+a:focus {
   text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 main {
@@ -118,6 +145,7 @@ main {
 .site-header__nav a {
   font-weight: 500;
   color: var(--text);
+  padding: 0.5rem 0.6rem;
 }
 
 .button {
@@ -378,6 +406,7 @@ main {
 
 .gallery img {
   width: 100%;
+  height: auto;
   display: block;
 }
 
