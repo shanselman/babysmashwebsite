@@ -86,7 +86,8 @@
 				<a href="#videos">Videos</a>
 				<a href="#screenshots">Screenshots</a>
 				<a href="#about">About</a>
-				<a class="button button--ghost" href="#mini-game">Play now</a>
+				<button type="button" class="button button--ghost" id="tip-button-nav">Tip 🌮</button>
+				<a class="button button--primary" href="#mini-game">Play now</a>
 			</nav>
 		</header>
 
@@ -100,7 +101,7 @@
 					</p>
 					<div class="hero__actions">
 						<a class="button button--primary" id="download-button" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe">
-							<span id="download-text">Download for Windows</span> — Free
+							<span id="download-text">Download for Windows</span> — FREE
 						</a>
 						<a class="button button--secondary" href="https://github.com/shanselman/babysmash">
 							View source on GitHub
@@ -169,22 +170,26 @@
 					<li><strong>Setup.exe</strong> — Recommended. Installs to Start Menu with auto-updates.</li>
 					<li><strong>Portable.zip</strong> — Extract and run anywhere, great for USB drives.</li>
 					<li>Works on Windows 10 and later (64-bit). No .NET installation required!</li>
+					<li>Digitally signed and free of viruses.</li>
 					<li>Always free—Baby Smash! is open source and community maintained.</li>
 				</ul>
 				<p style="margin-top: 1rem;"><a href="https://github.com/shanselman/babysmash/releases/latest">Looking for Linux or other platforms? View all releases →</a></p>
-				<form
-					class="donate"
-					name="_xclick"
-					action="https://www.paypal.com/cgi-bin/webscr"
-					method="post"
-				>
-					<input type="hidden" name="cmd" value="_xclick" />
-					<input type="hidden" name="business" value="scott@hanselman.com" />
-					<input type="hidden" name="item_name" value="BabySmash!" />
-					<input type="hidden" name="currency_code" value="USD" />
-					<input type="hidden" name="amount" value="8.00" />
-					<button type="submit" class="button button--ghost">Tip the toy box ($8) and buy Scott some tacos</button>
-				</form>
+				<div class="donate">
+					<button type="button" class="button button--ghost" id="tip-button">Tip the toy box and buy Scott some tacos</button>
+				</div>
+				<div class="modal-overlay" id="tip-modal" aria-hidden="true">
+					<div class="modal" role="dialog" aria-labelledby="modal-title">
+						<h3 id="modal-title">Buy Scott some tacos 🌮</h3>
+						<p>Thanks for supporting Baby Smash!</p>
+						<div class="modal__options">
+							<a class="button button--primary" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=scott@hanselman.com&item_name=BabySmash!&currency_code=USD&amount=8.00" target="_blank" rel="noopener">PayPal ($8)</a>
+							<a class="button button--secondary" href="https://cash.app/$shanselman" target="_blank" rel="noopener">Cash App</a>
+							<a class="button button--secondary" href="https://github.com/sponsors/shanselman?frequency=one-time" target="_blank" rel="noopener">GitHub Sponsors</a>
+							<a class="button button--secondary" href="https://venmo.com/shanselman" target="_blank" rel="noopener">Venmo</a>
+						</div>
+						<button type="button" class="modal__close" id="modal-close" aria-label="Close">✕</button>
+					</div>
+				</div>
 			</section>
 
 			<section class="section" id="videos" aria-labelledby="videos-heading">
@@ -313,6 +318,7 @@
 
 				const ctx = canvas.getContext('2d');
 				const feedback = document.getElementById('mini-game-feedback');
+				const heroPlay = document.getElementById('mini-game');
 				const baseGiggle = document.getElementById('giggle-audio');
 				const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 				const palette = ['#FF6B6B', '#FFD166', '#06D6A0', '#118AB2', '#C77DFF', '#FF8FAB'];
@@ -439,6 +445,12 @@
 					}
 				};
 
+				const flashBorder = () => {
+					heroPlay.classList.remove('flash');
+					void heroPlay.offsetWidth;
+					heroPlay.classList.add('flash');
+				};
+
 				const createShape = ({ type, value } = {}) => {
 					const resolvedType = type || randomFrom(types);
 					const width = viewportWidth;
@@ -504,7 +516,7 @@
 
 					if (feedback) {
 						const message = label
-							? `Smashed "${label.toUpperCase()}" with confetti pals!`
+							? `Smashed "${label.toUpperCase()}" with shapes and letters and colors!`
 							: 'Smash! Letters and shapes everywhere!';
 						feedback.textContent = message;
 					}
@@ -520,11 +532,13 @@
 					}
 					spawnBurst(event.key.length === 1 ? event.key : '★');
 					playGiggle();
+					flashBorder();
 				};
 
 				const handlePointer = () => {
 					spawnBurst();
 					playGiggle();
+					flashBorder();
 				};
 
 				const setup = () => {
@@ -592,6 +606,34 @@
 						`;
 					}
 				}
+			})();
+		</script>
+		<script>
+			(() => {
+				const tipBtn = document.getElementById('tip-button');
+				const tipBtnNav = document.getElementById('tip-button-nav');
+				const modal = document.getElementById('tip-modal');
+				const closeBtn = document.getElementById('modal-close');
+
+				const openModal = () => {
+					modal.classList.add('is-open');
+					modal.setAttribute('aria-hidden', 'false');
+				};
+
+				const closeModal = () => {
+					modal.classList.remove('is-open');
+					modal.setAttribute('aria-hidden', 'true');
+				};
+
+				tipBtn.addEventListener('click', openModal);
+				tipBtnNav.addEventListener('click', openModal);
+				closeBtn.addEventListener('click', closeModal);
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) closeModal();
+				});
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+				});
 			})();
 		</script>
 	</body>
