@@ -71,13 +71,14 @@
 						and numbers that dance across the screen—without letting little ones break your computer.
 					</p>
 					<div class="hero__actions">
-						<a class="button button--primary" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe">
-							Download for Windows — Free
+						<a class="button button--primary" id="download-button" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe">
+							<span id="download-text">Download for Windows</span> — Free
 						</a>
 						<a class="button button--secondary" href="https://github.com/shanselman/babysmash">
 							View source on GitHub
 						</a>
 						<a class="hero__link" href="#download">System requirements</a>
+						<a class="hero__link" href="https://github.com/shanselman/babysmash/releases/latest">All platforms</a>
 					</div>
 					<ul class="hero__details">
 						<li><strong>Keyboard-locked:</strong> keeps little fingers safely in the app.</li>
@@ -130,18 +131,19 @@
 					<h2 id="download-heading">Download Baby Smash!</h2>
 					<p>Ready to play? Download the installer and you're set. Auto-updates keep you current!</p>
 				</div>
-				<div class="download-options">
-					<a class="button button--primary" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe">Download Installer (Free)</a>
-					<a class="button button--secondary" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Portable.zip">
+				<div class="download-options" id="download-options">
+					<a class="button button--primary" id="download-primary" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe">Download Installer (Free)</a>
+					<a class="button button--secondary" id="download-secondary" href="https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-win-x64.zip">
 						Download Portable ZIP
 					</a>
 				</div>
-				<ul class="download-details">
+				<ul class="download-details" id="download-details">
 					<li><strong>Setup.exe</strong> — Recommended. Installs to Start Menu with auto-updates.</li>
 					<li><strong>Portable.zip</strong> — Extract and run anywhere, great for USB drives.</li>
 					<li>Works on Windows 10 and later (64-bit). No .NET installation required!</li>
 					<li>Always free—Baby Smash! is open source and community maintained.</li>
 				</ul>
+				<p style="margin-top: 1rem;"><a href="https://github.com/shanselman/babysmash/releases/latest">Looking for Linux or other platforms? View all releases →</a></p>
 				<form
 					class="donate"
 					name="_xclick"
@@ -490,6 +492,45 @@
 				};
 
 				setup();
+			})();
+		</script>
+		<script>
+			// Detect Linux and update download buttons
+			(() => {
+				const isLinux = navigator.platform.toLowerCase().includes('linux') || 
+				                navigator.userAgent.toLowerCase().includes('linux');
+				
+				if (isLinux) {
+					// Hero button
+					const heroBtn = document.getElementById('download-button');
+					const heroText = document.getElementById('download-text');
+					if (heroBtn && heroText) {
+						heroBtn.href = 'https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-linux-x64.tar.gz';
+						heroText.textContent = 'Download for Linux';
+					}
+					
+					// Download section
+					const primaryBtn = document.getElementById('download-primary');
+					const secondaryBtn = document.getElementById('download-secondary');
+					const details = document.getElementById('download-details');
+					
+					if (primaryBtn) {
+						primaryBtn.href = 'https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-linux-x64.tar.gz';
+						primaryBtn.textContent = 'Download for Linux (Free)';
+					}
+					if (secondaryBtn) {
+						secondaryBtn.href = 'https://github.com/shanselman/babysmash/releases/latest/download/BabySmash-Setup.exe';
+						secondaryBtn.textContent = 'Download for Windows';
+					}
+					if (details) {
+						details.innerHTML = `
+							<li><strong>tar.gz</strong> — Extract and run <code>./babysmash</code></li>
+							<li>Requires <code>espeak</code> for speech: <code>sudo apt install espeak</code></li>
+							<li>Requires <code>pulseaudio-utils</code> for sound: <code>sudo apt install pulseaudio-utils</code></li>
+							<li>Always free—Baby Smash! is open source and community maintained.</li>
+						`;
+					}
+				}
 			})();
 		</script>
 	</body>
